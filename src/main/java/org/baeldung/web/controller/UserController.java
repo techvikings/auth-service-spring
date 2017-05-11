@@ -13,21 +13,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class UserController {
 
-    @Autowired
-    ActiveUserStore activeUserStore;
+	@Autowired
+	ActiveUserStore activeUserStore;
 
-    @Autowired
-    IUserService userService;
+	@Autowired
+	IUserService userService;
 
-    @RequestMapping(value = "/loggedUsers", method = RequestMethod.GET)
-    public String getLoggedUsers(final Locale locale, final Model model) {
-        model.addAttribute("users", activeUserStore.getUsers());
-        return "users";
-    }
+	@RequestMapping(value = "/loggedUsers", method = RequestMethod.GET)
+	public String getLoggedUsers(final Locale locale, final Model model) {
+		model.addAttribute("users", activeUserStore.getUsers());
+		return "users";
+	}
 
-    @RequestMapping(value = "/loggedUsersFromSessionRegistry", method = RequestMethod.GET)
-    public String getLoggedUsersFromSessionRegistry(final Locale locale, final Model model) {
-        model.addAttribute("users", userService.getUsersFromSessionRegistry());
-        return "users";
-    }
+	@RequestMapping(value = "/loggedUsersFromSessionRegistry", method = RequestMethod.GET)
+	public String getLoggedUsersFromSessionRegistry(final Locale locale, final Model model) {
+		model.addAttribute("users", userService.getUsersFromSessionRegistry());
+		return "users";
+	}
 }
